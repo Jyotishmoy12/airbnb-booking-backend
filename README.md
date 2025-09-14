@@ -5,7 +5,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Docker](https://img.shields.io/badge/Docker-Required-blue.svg)](https://www.docker.com/)
-[![pnpm](https://img.shields.io/badge/pnpm-Package%20Manager-orange.svg)](https://pnpm.io/)
+[![npm](https://img.shields.io/badge/npm-Package%20Manager-red.svg)](https://www.npmjs.com/)
 
 ## 📋 Table of Contents
 
@@ -18,7 +18,7 @@
 
 ## 🌟 Overview
 
-A production-ready, microservices-based Airbnb clone featuring hotel management, booking operations, and notification services. Built with modern technologies and containerized for scalable deployment.
+A production-ready, microservices-based Airbnb clone featuring hotel management through booking operations and notification services. Built with modern technologies and containerized for scalable deployment.
 
 ## 🏛️ System Architecture
 
@@ -33,14 +33,12 @@ graph TB
     end
     
     subgraph "Microservices"
-        HS[Hotel Service<br/>Port: 3001]
-        BS[Booking Service<br/>Port: 3002]
+        BS[Booking Service<br/>Port: 3002<br/>Hotels & Bookings]
         NS[Notification Service<br/>Port: 3003]
     end
     
     subgraph "Databases"
-        MySQL[(MySQL<br/>Hotel Data)]
-        PostgreSQL[(PostgreSQL<br/>Booking Data)]
+        PostgreSQL[(PostgreSQL<br/>Hotels & Booking Data)]
         Redis[(Redis<br/>Queue & Cache)]
     end
     
@@ -49,17 +47,14 @@ graph TB
     end
     
     C --> GW
-    GW --> HS
     GW --> BS
     GW --> NS
     
-    HS --> MySQL
     BS --> PostgreSQL
     BS --> BQ
     NS --> Redis
     NS --> BQ
     
-    style HS fill:#e1f5fe
     style BS fill:#f3e5f5
     style NS fill:#e8f5e8
 ```
@@ -69,13 +64,12 @@ graph TB
 ```mermaid
 sequenceDiagram
     participant U as User
-    participant HS as Hotel Service
     participant BS as Booking Service
     participant NS as Notification Service
     participant Q as Bull Queue
 
-    U->>HS: Search Hotels
-    HS->>U: Return Available Hotels
+    U->>BS: Search/Create Hotels
+    BS->>U: Return Hotel Data
     
     U->>BS: Create Booking
     BS->>BS: Validate & Store Booking
@@ -89,23 +83,16 @@ sequenceDiagram
 
 ## 🚀 Services
 
-### Hotel Service (Port 3001)
-- **Purpose**: Hotel listings and management operations
-- **Database**: MySQL with Sequelize ORM
-- **Features**:
-  - Hotel CRUD operations
-  - Search and filtering capabilities
-  - Availability management
-  - Room type configurations
-
 ### Booking Service (Port 3002)
-- **Purpose**: Booking operations and reservation management
+- **Purpose**: Hotel management, booking operations and reservation management
 - **Database**: PostgreSQL with Prisma ORM
 - **Features**:
+  - Hotel CRUD operations (create, read, update, delete)
+  - Hotel search and filtering capabilities
   - Reservation creation and management
-  - Payment processing integration
   - Booking status tracking
   - Cancellation handling
+  - Room availability management
 
 ### Notification Service (Port 3003)
 - **Purpose**: Email notifications and messaging
@@ -123,14 +110,13 @@ sequenceDiagram
 🚀 Runtime          │ Node.js 18+ with Express.js
 📘 Language         │ TypeScript for type safety
 🐳 Containerization │ Docker & Docker Compose
-📦 Package Manager  │ pnpm for efficient dependency management
+📦 Package Manager  │ npm for efficient dependency management
 ```
 
 ### Databases & Storage
 ```
-🗄️ Hotel Data       │ MySQL with Sequelize ORM
-🗄️ Booking Data     │ PostgreSQL with Prisma ORM
-🔄 Queue & Cache    │ Redis with Bull Queue
+🗄️ Hotels & Bookings │ PostgreSQL with Prisma ORM
+🔄 Queue & Cache     │ Redis with Bull Queue
 ```
 
 ### Development Tools
@@ -242,12 +228,10 @@ NODE_ENV=development
 PORT=3000
 
 # Database connections
-MYSQL_URL=mysql://user:password@localhost:3306/hotels
-POSTGRESQL_URL=postgresql://user:password@localhost:5432/bookings
+POSTGRESQL_URL=postgresql://user:password@localhost:5432/airbnb
 REDIS_URL=redis://localhost:6379
 
 # Service URLs
-HOTEL_SERVICE_URL=http://localhost:3001
 BOOKING_SERVICE_URL=http://localhost:3002
 NOTIFICATION_SERVICE_URL=http://localhost:3003
 ```
