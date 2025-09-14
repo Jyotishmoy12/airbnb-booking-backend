@@ -38,7 +38,7 @@ graph TB
     end
     
     subgraph "Databases"
-        MySQL[(PostgreSQL<br/>Booking Data)]
+        MySQL[<br/>Booking Data)]
         Redis[(Redis<br/>Queue & Cache)]
     end
     
