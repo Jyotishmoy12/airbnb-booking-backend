@@ -51,14 +51,12 @@ graph TB
     GW --> HS
     GW --> BS
     GW --> NS
-    
-    HS --> MySQL
+
     BS --> PostgreSQL
     BS --> BQ
     NS --> Redis
     NS --> BQ
-    
-    style HS fill:#e1f5fe
+
     style BS fill:#f3e5f5
     style NS fill:#e8f5e8
 ```
