@@ -18,7 +18,7 @@
 
 ## 🌟 Overview
 
-A production-ready, microservices-based Airbnb clone featuring hotel management through booking operations and notification services. Built with modern technologies and containerized for scalable deployment.
+A production-ready, microservices-based Airbnb clone featuring hotel management through booking operations and notification services. Built with modern technologies for  scalable deployment.
 
 ## 🏛️ System Architecture
 
