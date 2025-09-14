@@ -94,7 +94,8 @@ sequenceDiagram
   - Cancellation handling
   - Room availability management
 
-### Notification Service (Port 3003)
+### Notification Service (Port 3003) 
+link: https://github.com/Jyotishmoy12/Notification-service-airbnb
 - **Purpose**: Email notifications and messaging
 - **Database**: Redis for queue management
 - **Features**:
