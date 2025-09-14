@@ -145,7 +145,7 @@ sequenceDiagram
 
 ### Prerequisites
 - **Docker** & **Docker Compose** (latest)
-- **Node.js** 18+ and **pnpm**
+- **Node.js** 18+ and **npm**
 - **Git** for version control
 
 ### Installation
@@ -159,8 +159,6 @@ sequenceDiagram
 2. **Install dependencies:**
    ```bash
    npm install
-   # or if you have pnpm installed globally
-   pnpm install
    ```
 
 3. **Start all services:**
