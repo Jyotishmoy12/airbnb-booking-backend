@@ -38,8 +38,7 @@ graph TB
     end
     
     subgraph "Databases"
-        MySQL[(MySQL<br/>Hotel Data)]
-        PostgreSQL[(PostgreSQL<br/>Booking Data)]
+        MySQL[(PostgreSQL<br/>Booking Data)]
         Redis[(Redis<br/>Queue & Cache)]
     end
     
@@ -51,7 +50,6 @@ graph TB
     GW --> BS
     GW --> NS
 
-    BS --> PostgreSQL
     BS --> BQ
     NS --> Redis
     NS --> BQ
