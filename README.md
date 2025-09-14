@@ -48,7 +48,6 @@ graph TB
     end
     
     C --> GW
-    GW --> HS
     GW --> BS
     GW --> NS
 
